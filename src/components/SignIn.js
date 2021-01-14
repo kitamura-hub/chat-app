@@ -79,7 +79,7 @@ export default function SignIn({ setName }) {
             onKeyDown={(e) => {
               if (isEdit) return;  // isEditがtrue(編集中であれば)何も返さない(ここで処理を終了させる。早期return)
               if (e.key === "Enter") {
-                e.preventDefault();
+                e.preventDefault();  // Enterキーを押下したときにリクエストが飛んでしまう(標準的な処理)のを防ぐ記述
                 setName(e.target.value);  // 引数はstring(state)でも可
               }
             }}
