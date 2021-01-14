@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import MyIcon from '../img/angry_cat.jpg'
+import OtherIcon from '../img/kaomoji_icon.png'
 
 const useStyles = makeStyles({
   root: {
@@ -9,13 +11,15 @@ const useStyles = makeStyles({
   }
 });
 
-const MessageInputField = () => {
+const MessageInputField = ({ name }) => {
   const classes = useStyles();
+  const iconPath = (name === "cat") ? MyIcon : OtherIcon;
+
   return (
     <div className={classes.root}>
       <Grid container>
         <Grid xs={1}>
-          <Avatar />
+          <Avatar src={iconPath}/>
         </Grid>
         <Grid xs={10}>入力</Grid>
         <Grid xs={1}>ボタン</Grid>
