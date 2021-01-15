@@ -10,8 +10,8 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-const messageRef = database.ref('messages');  //messagesというリファレンスを作成
+const messagesRef = database.ref('messages');  //messagesというリファレンスを作成
 
 export const pushMessage = ({ name, text }) => {
-  messageRef.push({ name, text });
+  messagesRef.push({ name, text });
 }
