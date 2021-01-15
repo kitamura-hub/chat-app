@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import MessageField from './MessageField';
 import MyIcon from '../img/angry_cat.jpg'
 import OtherIcon from '../img/kaomoji_icon.png'
 
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
 });
 
 const MessageInputField = ({ name }) => {
+  const [ text, setText ] = useState('');  // チャットの入力文字列を管理
   const classes = useStyles();
   const iconPath = (name === "cat") ? MyIcon : OtherIcon;
 
@@ -21,7 +23,9 @@ const MessageInputField = ({ name }) => {
         <Grid xs={1}>
           <Avatar src={iconPath}/>
         </Grid>
-        <Grid xs={10}>入力</Grid>
+        <Grid xs={10}>
+          <MessageField name={name} text={text} setText={setText} />
+        </Grid>
         <Grid xs={1}>ボタン</Grid>
       </Grid>
     </div>
