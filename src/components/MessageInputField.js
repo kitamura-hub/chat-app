@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageField from './MessageField';
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 });
 
 const MessageInputField = ({ name }) => {
+  const inputEl = useRef(null);  // MessageFieldで送信ボタンを押下した後にautofocusするためのオブジェクト
   const [ text, setText ] = useState('');  // チャットの入力文字列を管理
   const classes = useStyles();
   const iconPath = (name === "cat") ? MyIcon : OtherIcon;
@@ -26,10 +27,10 @@ const MessageInputField = ({ name }) => {
           <Avatar src={iconPath}/>
         </Grid>
         <Grid item xs={10}>
-          <MessageField name={name} text={text} setText={setText} />
+          <MessageField name={name} text={text} setText={setText} inputEl={inputEl} />
         </Grid>
         <Grid item xs={1}>
-          <MessageSubmitButton name={name} text={text} setText={setText} />
+          <MessageSubmitButton name={name} text={text} setText={setText} inputEl={inputEl} />
         </Grid>
       </Grid>
     </div>

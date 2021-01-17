@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { pushMessage } from '../firebase';
 
-const MessageField = ({ name, text, setText }) => {
+const MessageField = ({ name, text, setText, inputEl }) => {
   const [ isEdit, setIsEdit ] = useState(false);  // 日本語の編集中かどうかの判定(状態)を管理(trueは編集中｜falseは編集中ではない)
 
   return (
     <TextField
+      autoFocus
+      inputRef={inputEl}
       fullWidth={true}
       onChange={(e) => setText(e.target.value)}
       onKeyDown={(e) => {
