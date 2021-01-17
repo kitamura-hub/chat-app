@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageField from './MessageField';
+import MessageSubmitButton from './MessageSubmitButton';
+
 import MyIcon from '../img/angry_cat.jpg'
 import OtherIcon from '../img/kaomoji_icon.png'
 
@@ -26,7 +28,9 @@ const MessageInputField = ({ name }) => {
         <Grid item xs={10}>
           <MessageField name={name} text={text} setText={setText} />
         </Grid>
-        <Grid item xs={1}>ボタン</Grid>
+        <Grid item xs={1}>
+          <MessageSubmitButton name={name} text={text} setText={setText} />
+        </Grid>
       </Grid>
     </div>
   );
