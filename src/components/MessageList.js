@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { List } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import MessageItem from './MessageItem'
 import { messagesRef } from '../firebase';
 
 const useStyles = makeStyles({
   root: {
     gridRow: 1,  // MessageInputFieldはGridにおいて、Gridが定める境界線が上から数えて1番目に位置する
+    overflow: 'auto',
+    width: '100%'
   }
 });
 
@@ -15,7 +19,7 @@ const MessageList = () => {
   useEffect(() => {
     messagesRef
     .orderByKey()  // キー順(時系列順)
-    .limitToLast(3)  // 最新のメッセージからx件取得
+    .limitToLast(15)  // 最新のメッセージからx件取得
     .on('value', (snapshot) => {
       const messages = snapshot.val();
       if (messages === null) return;  // messagesの中身がnullの場合は早期return
@@ -27,6 +31,14 @@ const MessageList = () => {
       setMessages(newMessages);
   });
   }, []);
-  return <div className={classes.root}>MessageList</div>;
+  return (
+    <List className={classes.root}>
+      {
+        messages.map(({ key, name, text }) => {
+          return <MessageItem key={key} name={name} text={text} >item</MessageItem>
+        })
+      }
+    </List>
+  );
 }
 export default MessageList;
