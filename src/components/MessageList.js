@@ -31,13 +31,23 @@ const MessageList = () => {
       setMessages(newMessages);
   });
   }, []);
+
+  const lengthMsg = messages.length;
+
   return (
     <List className={classes.root}>
-      {
-        messages.map(({ key, name, text }) => {
-          return <MessageItem key={key} name={name} text={text} >item</MessageItem>
-        })
-      }
+      {messages.map(({ key, name, text }, index) => {
+        const isLastItem = (lengthMsg === index + 1);  // 最新のメッセージかどうか(配列とindexの長さが同じ=最新のメッセージ)
+
+        return (
+          <MessageItem
+            key={key}
+            name={name}
+            text={text}
+            isLastItem={isLastItem}
+          />
+        );
+      })}
     </List>
   );
 }

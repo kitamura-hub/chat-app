@@ -15,7 +15,7 @@ const MessageField = ({ name, text, setText, inputEl }) => {
         if (isEdit) return;  // isEditがtrue(編集中であれば)何も返さない(ここで処理を終了させる。早期return)
         if (e.target.value === '') return;  // チャットの入力エリアが空の場合は早期return
         if (e.key === "Enter") {
-          pushMessage({ name: 'cat', text });
+          pushMessage({ name, text });
           setText('');
           e.preventDefault();  // Enterキーを押下したときにリクエストが飛んでしまう(標準的な処理)のを防ぐ記述
         }
