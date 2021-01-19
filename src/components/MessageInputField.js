@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Grid, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Avatar } from '@material-ui/core';
 import MessageField from './MessageField';
 import MessageSubmitButton from './MessageSubmitButton';
 import { icon_setting } from '../icon_setting';

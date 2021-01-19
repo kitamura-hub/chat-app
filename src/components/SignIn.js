@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import { Button, CssBaseline, TextField, Link, Box, Typography, Container }
+from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -77,7 +72,7 @@ export default function SignIn({ setName }) {
             autoFocus
             onChange={(e) => setString(e.target.value)}
             onKeyDown={(e) => {
-              if (isEdit) return;  // isEditがtrue(編集中であれば)何も返さない(ここで処理を終了させる。早期return)
+              if (isEdit) return;  // isEditがtrue(編集中であれば)は早期return
               if (e.key === "Enter") {
                 e.preventDefault();  // Enterキーを押下したときにリクエストが飛んでしまう(標準的な処理)のを防ぐ記述
                 setName(e.target.value);  // 引数はstring(state)でも可

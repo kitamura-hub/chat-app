@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography } from '@material-ui/core';
+import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography }
+from '@material-ui/core';
 import { icon_setting } from '../icon_setting';
 
 const useStyles = makeStyles(() => ({
