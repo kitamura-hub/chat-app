@@ -1,9 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, ListItemAvatar, Avatar, ListItemText, Typography } from '@material-ui/core';
-
-import MyIcon from '../img/angry_cat.jpg'
-import OtherIcon from '../img/kaomoji_icon.png'
+import { icon_setting } from '../icon_setting';
 
 const useStyles = makeStyles(() => ({
   inline: {
@@ -14,7 +12,7 @@ const useStyles = makeStyles(() => ({
 const MessageItem = ({ name, text, isLastItem}) => {
   const ref = useRef();
   const classes = useStyles();
-  const iconPath = (name === "cat") ? MyIcon : OtherIcon;
+  const icon = icon_setting(name);
 
   // isLastItemがtrueのときにスクロール
   useEffect(() => {
@@ -24,7 +22,7 @@ const MessageItem = ({ name, text, isLastItem}) => {
   return (
     <ListItem divider={true} ref={ref} >
       <ListItemAvatar>
-        <Avatar src={iconPath} />
+        <Avatar src={icon} />
       </ListItemAvatar>
       <ListItemText
         primary={name}
