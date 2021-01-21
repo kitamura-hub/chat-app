@@ -75,7 +75,7 @@ export default function SignIn({ setName }) {
               if (isEdit) return;  // isEditがtrue(編集中であれば)は早期return
               if (e.key === "Enter") {
                 e.preventDefault();  // Enterキーを押下したときにリクエストが飛んでしまう(標準的な処理)のを防ぐ記述
-                setName(e.target.value);  // 引数はstring(state)でも可
+                setName(string);
               }
             }}
             // 日本語の変換処理がスタートしたときに発火
@@ -90,7 +90,9 @@ export default function SignIn({ setName }) {
             color="primary"
             className={classes.submit}
             disabled={disabled}
-            onClick={() => setName(string)}
+            onClick={() => {
+              setName(string)
+            }}
           >
             はじめる
           </Button>
