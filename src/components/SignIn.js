@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, CssBaseline, TextField, Link, Box, Typography, Container }
 from '@material-ui/core';
+import { sendPushNotification } from '../msg_notification.js';
 
 function Copyright() {
   return (
@@ -76,6 +77,7 @@ export default function SignIn({ setName }) {
               if (e.key === "Enter") {
                 e.preventDefault();  // Enterキーを押下したときにリクエストが飛んでしまう(標準的な処理)のを防ぐ記述
                 setName(string);
+                sendPushNotification(string);
               }
             }}
             // 日本語の変換処理がスタートしたときに発火
@@ -92,6 +94,7 @@ export default function SignIn({ setName }) {
             disabled={disabled}
             onClick={() => {
               setName(string)
+              sendPushNotification(string);
             }}
           >
             はじめる
