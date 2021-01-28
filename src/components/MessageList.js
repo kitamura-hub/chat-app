@@ -19,7 +19,7 @@ const MessageList = () => {
   useEffect(() => {
     messagesRef
     .orderByKey()  // キー順(時系列順)
-    .limitToLast(15)  // 最新のメッセージからx件取得
+    .limitToLast(100)  // 最新のメッセージからx件取得
     .on('value', (snapshot) => {
       const messages = snapshot.val();
       if (messages === null) return;  // messagesの中身がnullの場合は早期return
